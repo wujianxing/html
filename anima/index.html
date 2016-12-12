@@ -2,16 +2,28 @@
 <html>
 <head>
     <style>
-        div {
+        div{
             width: 100px;
             height: 100px;
             background-color: red;
+
+        }
+        #a {
             -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
             -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
             animation-name: example;
-            animation-duration: 4s;
-        }
+            animation-duration: 4s;  }
 
+        #a2{
+            position: relative;
+            -webkit-animation-name: example2; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+            animation-name: example2;
+            animation-duration: 4s;
+            animation-iteration-count:3;
+            -webkit-animation-iteration-count:3; /* Safari 和 Chrome */
+
+        }
         /* Safari 4.0 - 8.0 */
         @-webkit-keyframes example {
             from {background-color: red;}
@@ -23,15 +35,34 @@
             from {background-color: red;}
             to {background-color: yellow;}
         }
+        /* Safari 4.0 - 8.0 */
+        @-webkit-keyframes example2 {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:yellow; left:200px; top:0px;}
+            50%  {background-color:blue; left:200px; top:200px;}
+            75%  {background-color:green; left:0px; top:200px;}
+            100% {background-color:red; left:0px; top:0px;}
+        }
+
+        /* Standard syntax */
+        @keyframes example2 {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:yellow; left:200px; top:0px;}
+            50%  {background-color:blue; left:200px; top:200px;}
+            75%  {background-color:green; left:0px; top:200px;}
+            100% {background-color:red; left:0px; top:0px;}
+        }
     </style>
 </head>
 <body>
 
 <p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
 
-<div></div>
+<div id="a"></div>
+<p>-------</p>
+<div id="a2"></div>
 
-<p><b>Note:</b> When an animation is finished, it changes back to its original style.</p>
+
 
 </body>
 </html>
