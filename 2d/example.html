@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 300px;
+            height: 100px;
+            background-color: yellow;
+            border: 1px solid black;
+
+        }
+
+        div#mytrans {
+            -moz-transform: translate(50px,100px);
+            -ms-transform: translate(50px,100px);
+            transform: translate(50px,100px);
+        }
+        div#mymatrix {
+            -ms-transform: matrix(1, -0.3, 0, 1, 0, 0); /* IE 9 */
+            -webkit-transform: matrix(1, -0.3, 0, 1, 0, 0); /* Safari */
+            transform: matrix(1, -0.3, 0, 1, 0, 0); /* Standard syntax */
+        }
+
+        div#mymatrix2 {
+            -ms-transform: matrix(1, 0.3, 0, 1, 0, 0); /* IE 9 */
+            -webkit-transform: matrix(1, 0.3, 0, 1, 0, 0); /* Safari */
+            transform: matrix(1, 0.3, 0, 1, 0, 0); /* Standard syntax */
+        }
+    </style>
+</head>
+<body>
+<div id="mytrans">
+    translate() 是移动, 本例translate(50px,100px)
+    The translate() method moves an element from its current position. This div element is moved 50 pixels to the right, and 100 pixels down from its current position.
+</div>
+
+<div id="mymatrix">
+    Using the matrix(  Y-0.3) method.
+</div>
+<div id="mymatrix2">
+    Using the matrix( Y0.3) method.
+</div>
+</body>
+</html>
