@@ -11,7 +11,7 @@
         var starCount = 800;
 
         var rains = new Array();
-        var rainCount =20;
+        var rainCount =30;
 
         //初始化画布及context
         function init(){
@@ -59,8 +59,11 @@
         //画月亮
         function drawMoon(){
             var moon = new Image();
-            moon.src = "#../img/moon.jpg"
+            moon.src = "../moon1.jpg";
             context.drawImage(moon,-5,-10);
+            arr.push(moon);
+
+
         }
 
 
@@ -84,10 +87,10 @@
                 rain.draw();
                 rains.push(rain);
             }
-
             drawMoon();//绘制月亮
             playStars();//绘制闪动的星星
             playRains();//绘制流星
+
 
         }
 
@@ -133,7 +136,7 @@
                 var cos = Math.cos(this.angle*3.14/180);
                 var sin = Math.sin(this.angle*3.14/180) ;
                 this.width = this.length*cos ;  //流星所占宽度
-                this.height = this.length*sin ;//流星所占高度
+                this.height = this.length*sin+2 ;//流星所占高度
                 this.offset_x = this.speed*cos ;
                 this.offset_y = this.speed*sin;
             }
@@ -141,8 +144,11 @@
             /**************获取随机颜色函数*****************/
             this.getRandomColor = function (){
                 var a = Math.ceil(255-240* Math.random());
+                var b = Math.ceil(255-240* Math.random());
+                var c = Math.ceil(255-240* Math.random());
+
                 //中段颜色
-                this.color1 = "rgba("+a+","+a+","+a+",1)";
+                this.color1 = "rgba("+a+","+b+","+c+",1)";
                 //结束颜色
                 this.color2 = "black";
             }
@@ -161,9 +167,9 @@
             {
                 //横坐标200--1200
 
-                this.x = Math.random() * window.innerWidth; //窗口高度
+                this.x = Math.random() * window.innerWidth+200; //窗口高度
                 //纵坐标小于600
-                this.y = Math.random() * window.innerHeight;  //窗口宽度
+                this.y = Math.random() * window.innerHeight-400;  //窗口宽度
             }
             /****绘制流星***************************/
             this.draw = function () //绘制一个流星的函数
