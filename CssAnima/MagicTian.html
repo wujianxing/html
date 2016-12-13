@@ -20,20 +20,25 @@
             align-items: center;
             background: #f0b375;
         }
-        #div2{
+
+        #div2 {
             max-width: 50vh;
         }
+
         svg {
             fill: none;
         }
+
         #green {
             fill: #b3e6b3;
             color: #40bf40;
         }
+
         #red {
             fill: #e6b3b3;
             color: #bf4040;
         }
+
         #blue {
             fill: #b3b3e6;
             color: #4040bf;
@@ -43,77 +48,119 @@
 <body>
 <div id="div2">
     <p>svg 图片效果</p>
-    <svg   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-90 0 180 180"  width="50" height="50" version="1.0">
-    <g transform="translate(0, 30) scale(3)" id="svgdemo" >
-        <path d="M-30 0 l30 -10 l-10 10 Z" />
-        <path d="M-20 0 l20 -10 l-10 10 Z" fill="currentColor" />
-        <path d="M-10 0 l10 -10 l10 10 Z" />
-        <path d="M20 0 l-20 -10 l10 10 Z" fill="currentColor" />
-        <path d="M30 0 l-30 -10 l20 10 Z" />
-        <path d="M15 0 l0 15" stroke="currentColor" />
-        <path d="M-15 0 l0 15" stroke="currentColor" />
-        <path d="M15 15 l10 0 l0 3 l-15 10 l-20 0 l-15 -10 l0 -3 l10 0 l5 3 l20 0 Z" fill="currentColor" />
-    </g>
-        </svg>
-    <p>加上 animateMotion 之后 里面用到 dur="10" 10秒 repeateCount="indefinite" 无限 keyPoints="0;0.5:1" keySplines="int,int,int"calcModel="spline"</p>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode">calcMode 更详细的资料</a>
-    <p>这样 SVG简单动画就实现了,跟CSS动画类似,,,所以他还可以嵌套。。右图</p>
-    <svg   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-90 0 180 180"  width="50" height="50" version="1.0">
-
-    <g>
-        <use id="green" xlink:href="#svgdemo" />
-        <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1" keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline">
-        </animateMotion>
-        <animateTransform attributeName="transform" attributeType="XML" type="rotate" values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0' keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s" delay="0.5s" repeatCount="indefinite"
-        />
-    </g>
-        </svg>
-    <p>又图效果如何实现?就是在上图,在嵌套一个做圆旋转的动画,,代码 <animateTransform attributeName="transform" attributeType="XML" type="rotate" values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0' keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s" delay="0.5s" repeatCount="indefinite"
-    </p>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-90 0 180 180"
+         width="50" height="50" version="1.0">
+        <g transform="translate(0, 30) scale(3)" id="svgdemo">
+            <path d="M-30 0 l30 -10 l-10 10 Z"/>
+            <path d="M-20 0 l20 -10 l-10 10 Z" fill="currentColor"/>
+            <path d="M-10 0 l10 -10 l10 10 Z"/>
+            <path d="M20 0 l-20 -10 l10 10 Z" fill="currentColor"/>
+            <path d="M30 0 l-30 -10 l20 10 Z"/>
+            <path d="M15 0 l0 15" stroke="currentColor"/>
+            <path d="M-15 0 l0 15" stroke="currentColor"/>
+            <path d="M15 15 l10 0 l0 3 l-15 10 l-20 0 l-15 -10 l0 -3 l10 0 l5 3 l20 0 Z" fill="currentColor"/>
+        </g>
+    </svg>
     <p> 即加一个 animateTransform 然后一堆属性</p>
+    <p>结构是这样的 svg g g> 这一层有两个元素,一个g标签,目标svg图片,另一就是 animateTransform 动画集合/g /svg p>
     <p>值得注意的是 type="rotate" values="0,0,0",第一个0是指旋转角度,第二个,第三个,是x,y 坐标,关键点,关键时间都是一一对应的</p>
-    <p>对了,记得 <mpath xlink:href="#motion" /></p>
-    <p> motion 就是指定 的轨迹</p>
+    <p>这样 SVG简单动画就实现了,跟CSS动画类似,,,所以他还可以嵌套。。右图</p>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-90 0 180 180"
+         width="50" height="50" version="1.0">
+
+        <g>
+            <use id="" xlink:href="#svgdemo"/>
+
+            <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                              values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0'
+                              keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s"
+                              delay="0.5s" repeatCount="indefinite"
+            />
+        </g>
+    </svg>
+    <p>又图效果如何实现?就是在上图,在嵌套一个做圆旋转的动画???</p>
+    <p>就是在 g 和 animateTransform 同层下 加 animateMotion</p>
+    <p>对了,记得
+        <mpath xlink:href="#motion"/>
+    </p>
+    <p> motion 就是指定 的轨迹 也是svg路径</p>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode">calcMode 更详细的资料</a>
+
 </div>
 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-90 0 180 180" width="50"
+     height="50" version="1.0">
 
-<div id="cont">
-    <svg id="wheel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-1000 0 1500 1000" width="500" height="500" version="1.0">
-        <defs>
-            <path stroke="black" fill="none" stroke-width="5" d="M-250 750
+    <g transform="translate(0, 30) scale(3)" id="carriage">
+        <path d="M-30 0 l30 -10 l-10 10 Z"/>
+        <path d="M-20 0 l20 -10 l-10 10 Z" fill="currentColor"/>
+        <path d="M-10 0 l10 -10 l10 10 Z"/>
+        <path d="M20 0 l-20 -10 l10 10 Z" fill="currentColor"/>
+        <path d="M30 0 l-30 -10 l20 10 Z"/>
+        <path d="M15 0 l0 15" stroke="currentColor"/>
+        <path d="M-15 0 l0 15" stroke="currentColor"/>
+        <path d="M15 15 l10 0 l0 3 l-15 10 l-20 0 l-15 -10 l0 -3 l10 0 l5 3 l20 0 Z" fill="currentColor"/>
+    </g>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-1000 0 1500 1000"
+     width="500" height="500" version="1.0">
+
+    <path stroke="black" fill="none" stroke-width="5" d="M-250 750
          c-150 0, -250 -125, -250 -250
      c0 -150, 125 -250, 250 -250,
      c150 0, 250 125, 250 250,
      c0 150, -125 250, -250 250,
      " id="motion">
-            </path>
-            <g transform="translate(0, 30) scale(3)" id="carriage">
-                <path d="M-30 0 l30 -10 l-10 10 Z" />
-                <path d="M-20 0 l20 -10 l-10 10 Z" fill="currentColor" />
-                <path d="M-10 0 l10 -10 l10 10 Z" />
-                <path d="M20 0 l-20 -10 l10 10 Z" fill="currentColor" />
-                <path d="M30 0 l-30 -10 l20 10 Z" />
-                <path d="M15 0 l0 15" stroke="currentColor" />
-                <path d="M-15 0 l0 15" stroke="currentColor" />
-                <path d="M15 15 l10 0 l0 3 l-15 10 l-20 0 l-15 -10 l0 -3 l10 0 l5 3 l20 0 Z" fill="currentColor" />
-            </g>
-        </defs>
-        <use xlink:href="#motion" />
+    </path>
+</svg>
+
+<div id="cont">
+    <svg id="wheel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         viewbox="-1000 0 1500 1000" width="500" height="500" version="1.0">
+        <!--<defs>-->
+            <!--<path stroke="black" fill="none" stroke-width="5" d="M-250 750-->
+         <!--c-150 0, -250 -125, -250 -250-->
+     <!--c0 -150, 125 -250, 250 -250,-->
+     <!--c150 0, 250 125, 250 250,-->
+     <!--c0 150, -125 250, -250 250,-->
+     <!--" id="motion">-->
+            <!--</path>-->
+            <!--我把他注释掉了-->
+            <!--<g transform="translate(0, 30) scale(3)" id="carriage">-->
+            <!--<path d="M-30 0 l30 -10 l-10 10 Z" />-->
+            <!--<path d="M-20 0 l20 -10 l-10 10 Z" fill="currentColor" />-->
+            <!--<path d="M-10 0 l10 -10 l10 10 Z" />-->
+            <!--<path d="M20 0 l-20 -10 l10 10 Z" fill="currentColor" />-->
+            <!--<path d="M30 0 l-30 -10 l20 10 Z" />-->
+            <!--<path d="M15 0 l0 15" stroke="currentColor" />-->
+            <!--<path d="M-15 0 l0 15" stroke="currentColor" />-->
+            <!--<path d="M15 15 l10 0 l0 3 l-15 10 l-20 0 l-15 -10 l0 -3 l10 0 l5 3 l20 0 Z" fill="currentColor" />-->
+            <!--</g>-->
+        <!--</defs>-->
+        <use xlink:href="#motion"/>
         <g id="carriages">
             <g>
-                <use id="green" xlink:href="#carriage" />
-                <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1" keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline">
-                    <mpath xlink:href="#motion" />
+                <use id="green" xlink:href="#carriage"/>
+                <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1"
+                               keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline">
+                    <mpath xlink:href="#motion"/>
                 </animateMotion>
-                <animateTransform attributeName="transform" attributeType="XML" type="rotate" values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0' keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s" delay="0.5s" repeatCount="indefinite"
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                  values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0'
+                                  keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s"
+                                  delay="0.5s" repeatCount="indefinite"
                 />
             </g>
             <g>
-                <use id="blue" xlink:href="#carriage" />
-                <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1" keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline" begin="-5s">
-                    <mpath xlink:href="#motion" />
+                <use id="blue" xlink:href="#carriage"/>
+                <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1"
+                               keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline" begin="-5s">
+                    <mpath xlink:href="#motion"/>
                 </animateMotion>
-                <animateTransform attributeName="transform" attributeType="XML" type="rotate" values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0' keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s" begin="-5.5s" repeatCount="indefinite"
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                  values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0'
+                                  keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s"
+                                  begin="-5.5s" repeatCount="indefinite"
                 />
             </g>
         </g>
