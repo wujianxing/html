@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background: #f0b375;
+        }
+        svg {
+            fill: none;
+        }
+        #green {
+            fill: #b3e6b3;
+            color: #40bf40;
+        }
+        #red {
+            fill: #e6b3b3;
+            color: #bf4040;
+        }
+        #blue {
+            fill: #b3b3e6;
+            color: #4040bf;
+        }
+    </style>
+
+</head>
+<body>
+<div id="cont">
+    <svg id="wheel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="-1000 0 1500 1000" width="500" height="500" version="1.0">
+        <defs>
+            <path stroke="black" fill="none" stroke-width="5" d="M-250 750
+     c-150 0, -250 -125, -250 -250
+     c0 -150, 125 -250, 250 -250,
+     c150 0, 250 125, 250 250,
+     c0 150, -125 250, -250 250,
+     " id="motion">
+            </path>
+            <g transform="translate(0, 30) scale(3)" id="carriage">
+                <path d="M-30 0 l30 -10 l-10 10 Z" />
+                <path d="M-20 0 l20 -10 l-10 10 Z" fill="currentColor" />
+                <path d="M-10 0 l10 -10 l10 10 Z" />
+                <path d="M20 0 l-20 -10 l10 10 Z" fill="currentColor" />
+                <path d="M30 0 l-30 -10 l20 10 Z" />
+                <path d="M15 0 l0 15" stroke="currentColor" />
+                <path d="M-15 0 l0 15" stroke="currentColor" />
+                <path d="M15 15 l10 0 l0 3 l-15 10 l-20 0 l-15 -10 l0 -3 l10 0 l5 3 l20 0 Z" fill="currentColor" />
+            </g>
+        </defs>
+        <use xlink:href="#motion" />
+        <g id="carriages">
+            <g>
+                <use id="green" xlink:href="#carriage" />
+                <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1" keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline">
+                    <mpath xlink:href="#motion" />
+                </animateMotion>
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate" values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0' keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s" delay="0.5s" repeatCount="indefinite"
+                />
+            </g>
+            <g>
+                <use id="blue" xlink:href="#carriage" />
+                <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0; 0.5; 1" keyTimes="0; 0.5; 1" keySplines="0.25 0.2 0.75 1; 0.25 0.2 0.75 1" calcMode="spline" begin="-5s">
+                    <mpath xlink:href="#motion" />
+                </animateMotion>
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate" values='0 0 0; 5 0 0; -15 0 0; 15 0 0; -10 0 0; 15 0 0; -15 0 0; 0 0 0' keyTimes="0; 0.04; 0.08; 0.43; 0.51; 0.58; 0.95; 1" calcMode="linear" dur="10s" begin="-5.5s" repeatCount="indefinite"
+                />
+            </g>
+        </g>
+    </svg>
+</div>
+</body>
+</html>
